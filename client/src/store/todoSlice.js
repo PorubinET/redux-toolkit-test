@@ -30,7 +30,7 @@ export const todoSlice = createSlice({
     name: 'todos',
     initialState: {
         todos: [],
-        filter: 'all'
+        filter: 'all',
     },
     reducers: {
         createTask(state, action) {
@@ -50,19 +50,15 @@ export const todoSlice = createSlice({
             state.todos = state.todos.filter(todo => todo._id !== action.payload)
         })
         .addCase(updateText.fulfilled, (state, action) => {
-            console.log(action)
             state.todos = state.todos.map(todo => ({ ...todo, text: todo._id === action.payload._id ? action.payload.input: todo.text}))
         })
         .addCase(updateChecker.fulfilled, (state, action) => {
-            console.log(action)
             state.todos = state.todos.map(todo => ({ ...todo, done: todo._id !== action.payload._id ? todo.done : !todo.done }))
         })
         .addCase(completedAll.fulfilled, (state, action) => {
-            console.log(action)
             state.todos.every(todo => todo.done) ? state.todos.map(todo => todo.done = !todo.done) : state.todos.map(todo => todo.done = true)
         })
         .addCase(deleteAll.fulfilled, (state, action) => {
-            console.log(action)
             state.todos = state.todos.filter(todo => !todo.done) 
         })
     }

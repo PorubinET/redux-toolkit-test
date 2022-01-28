@@ -1,9 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { taskLoad } from "../src/store/todoSlice"
+import { taskLoad } from "./store/todoSlice"
 import TaskInput from "./components/taskInput/taskInput";
-
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import MomentUtils from '@date-io/moment';
 
